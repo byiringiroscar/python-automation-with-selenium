@@ -9,8 +9,8 @@ driver = webdriver.Chrome(service=service)
 
 driver.get("https://google.com")
 
-input_element = driver.get_element(By.CLASS_NAME, "gLFyf")
-
+input_element = driver.find_element(By.CLASS_NAME, "gLFyf")
+input_element.send_keys("lionel messi")
 
 
 time.sleep(10)
