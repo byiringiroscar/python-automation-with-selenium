@@ -14,6 +14,11 @@ driver = webdriver.Chrome(service=service)
 
 driver.get("https://orteil.dashnet.org/cookieclicker/")
 
+cookie_id = "bigCookie"
+cookies_id = "cookies"
+product_price_prefix = "productPrice"
+product_prefix = "product"
+
 
 search_bar = WebDriverWait(driver, 20).until(
     EC.element_to_be_clickable((By.CLASS_NAME, "langSelectButton"))
@@ -29,8 +34,6 @@ choose_lang = driver.find_element(By.XPATH, "//*[contains(text(), 'English')]")
 choose_lang.click()
 
 
-cookie_id = "bigCookie"
-cookies_id = "cookies"
 
 cookie = driver.find_element(By.ID, cookie_id)
 
