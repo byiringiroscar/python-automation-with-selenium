@@ -19,16 +19,29 @@ search_bar = WebDriverWait(driver, 20).until(
     EC.element_to_be_clickable((By.CLASS_NAME, "langSelectButton"))
 )
 
-choose_lang = driver.find_element(By.CLASS_NAME, "langSelectButton")
+# choose_lang = driver.find_element(By.CLASS_NAME, "langSelectButton")
+WebDriverWait(driver, 5).until(
+    EC.element_to_be_clickable((By.XPATH, "//*[contains(text(), 'English')]"))
+
+)
+
+choose_lang = driver.find_element(By.XPATH, "//*[contains(text(), 'English')]")
 choose_lang.click()
 
 
 cookie_id = "bigCookie"
+cookies_id = "cookies"
 
 cookie = driver.find_element(By.ID, cookie_id)
-cookie.click()
 
 
-time.sleep(5)
+while True:
+    cookie.click()
+    cookies_count = driver.find_element(By.ID, cookies_id).text.split(" ")[0]
+    cookies_count = int(cookies_count.replace(",", ""))
+    print(cookies_count)
+
+
+time.sleep(10)
 
 driver.quit()
